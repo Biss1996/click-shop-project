@@ -22,5 +22,43 @@
     </nav>
 
 <div id="contact"></div>
+
+
+<button id="fetchButton">Our products</button>
+<h1>Product List</h1>
+<div id="product-container"></div>
+<div class="topnav">
+    <a class="active" href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+    <input type="text" placeholder="Search..">
+  </div>
+
+<script>
+    document.getElementById('fetchButton').addEventListener('click', fetchProducts);
+
+    function fetchProducts() {
+        fetch('https://fakestoreapi.com/products')
+            .then(response => response.json())
+            .then(data => {
+                const container = document.getElementById('product-container');
+                container.innerHTML = ""; // Clear previous content
+
+                data.slice(0, 5).forEach(product => { // Display only 5 products
+                    const productDiv = document.createElement('div');
+                    productDiv.innerHTML = `
+                        <h3>${product.title}</h3>
+                        <img src="${product.image}" width="100">
+                        <p>Price: $${product.price}</p>
+                    `;
+                    container.appendChild(productDiv);
+                });
+            })
+            .catch(error => console.error('Error fetching products:', error));
+    }
+</script>
+<footer>
+    <p>&copy; @2025 Bismark Bett</p>
+    </footer>
 </body>
 </html>
