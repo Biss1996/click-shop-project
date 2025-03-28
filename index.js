@@ -41,3 +41,8 @@ function displayProducts(products) {
         container.appendChild(productDiv);
     });
 }
+function addToCart(id, title, price, image) {
+    cart.push({ id, title, price, image });
+    document.getElementById('cartCount').textContent = cart.length;
+    console.log("Cart:", cart);
+}
