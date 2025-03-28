@@ -65,3 +65,8 @@ function viewCart() {
         cartContainer.appendChild(itemDiv);
     });
 }
+function searchProducts() {
+    const query = document.getElementById('searchInput').value.toLowerCase();
+    const filteredProducts = allProducts.filter(product => product.title.toLowerCase().includes(query));
+    displayProducts(filteredProducts);
+}
