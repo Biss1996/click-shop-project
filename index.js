@@ -70,3 +70,15 @@ function searchProducts() {
     const filteredProducts = allProducts.filter(product => product.title.toLowerCase().includes(query));
     displayProducts(filteredProducts);
 }
+function populateFilterOptions(products) {
+    const categorySet = new Set(products.map(product => product.category));
+    const filterDropdown = document.getElementById('filterCategory');
+    filterDropdown.innerHTML = '<option value="">All Categories</option>';
+
+    categorySet.forEach(category => {
+        const option = document.createElement('option');
+        option.value = category;
+        option.textContent = category;
+        filterDropdown.appendChild(option);
+    });
+}
