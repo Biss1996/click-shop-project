@@ -24,3 +24,20 @@ function getApi(){
 }
 getApi()
 
+
+function displayProducts(products) {
+    const container = document.getElementById('product-container');
+    container.innerHTML = ""; 
+
+    products.forEach(product => {
+        const productDiv = document.createElement('div');
+        productDiv.innerHTML = `
+            <h3>${product.title}</h3>
+            <img src="${product.image}" width="100">
+            <p>Category: ${product.category}</p>
+            <p>Price: $${product.price}</p>
+            <button onclick="addToCart(${product.id}, '${product.title}', ${product.price}, '${product.image}')">Add to Cart</button>
+        `;
+        container.appendChild(productDiv);
+    });
+}
