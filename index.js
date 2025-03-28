@@ -17,19 +17,11 @@ function fetchProducts() {
         .catch(error => console.error('Error fetching products:', error));
 }
 
-// function getApi(){
-//     fetch('https://click-shop-project.onrender.com')
-//     .then(r => r.json())
-//     .then(d => console.log(d))
-// }
-// getApi()
-
-
 function displayProducts(products) {
     const container = document.getElementById('product-container');
     container.innerHTML = ""; 
 
-    products.forEach(product => {
+    products.slice(0, 5).forEach(product => {
         const productDiv = document.createElement('div');
         productDiv.innerHTML = `
             <h3>${product.title}</h3>
@@ -41,11 +33,13 @@ function displayProducts(products) {
         container.appendChild(productDiv);
     });
 }
+
 function addToCart(id, title, price, image) {
     cart.push({ id, title, price, image });
     document.getElementById('cartCount').textContent = cart.length;
     console.log("Cart:", cart);
 }
+
 function viewCart() {
     const cartContainer = document.getElementById('cart-container');
     cartContainer.innerHTML = "<h3>Cart Items</h3>";
@@ -65,11 +59,13 @@ function viewCart() {
         cartContainer.appendChild(itemDiv);
     });
 }
+
 function searchProducts() {
     const query = document.getElementById('searchInput').value.toLowerCase();
     const filteredProducts = allProducts.filter(product => product.title.toLowerCase().includes(query));
     displayProducts(filteredProducts);
 }
+
 function populateFilterOptions(products) {
     const categorySet = new Set(products.map(product => product.category));
     const filterDropdown = document.getElementById('filterCategory');
@@ -82,6 +78,7 @@ function populateFilterOptions(products) {
         filterDropdown.appendChild(option);
     });
 }
+
 function filterProducts() {
     const selectedCategory = document.getElementById('filterCategory').value;
     const filteredProducts = selectedCategory ? allProducts.filter(product => product.category === selectedCategory) : allProducts;

@@ -3,74 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>click shop | online store</title>
+    <title>Click Shop | Online Store</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- <h1>Hello World</h1> -->
-    <script src = "index.js"></script>
+
     <header>
-        <h1>click shop</h1>
-        <!-- <p>our products   |   Tech Enthusiast   |   Actuary   |   Football fan</p> -->
+        <h1>Click Shop</h1>
     </header>
 
     <nav>
         <ul>
-            <li><a href="#Home">Home</a></li>
-            <!-- <li><a href=button id="fetchButton">Our products</button></a></li> -->
-            <li><a href="#contact us">Contact us</a></li>
+            <li><a href="#Home">About</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
 
-<div id="contact"></div>
+    <button id="fetchButton">Our Products</button>
 
+    <div>
+        <input type="text" id="searchInput" placeholder="Search product...">
+        <button id="searchButton">Search</button>
 
-<button id="fetchButton">Our Products</button>
+        <select id="filterCategory">
+            <option value="">All Categories</option>
+        </select>
+        <button id="filterButton">Filter</button>
+    </div>
 
-<div>
-    <input type="text" id="searchInput" placeholder="Search product...">
-    <button id="searchButton">Search</button>
+    <h1>Product List</h1>
+    <div id="product-container"></div>
 
-    <select id="filterCategory">
-        <option value="">All Categories</option>
-    </select>
-    <button id="filterButton">Filter</button>
-</div>
+    <h2>Shopping Cart</h2>
+    <button id="viewCartButton">View Cart (<span id="cartCount">0</span>)</button>
+    <div id="cart-container"></div>
 
-<h1>Product List</h1>
-<div id="product-container"></div>
+    <script src="index.js"></script>
 
-<h2>Shopping Cart</h2>
-<button id="viewCartButton">View Cart (<span id="cartCount">0</span>)</button>
-<div id="cart-container"></div>
-
-<script src="index.js"></script>
-
-<script>
-    document.getElementById('fetchButton').addEventListener('click', fetchProducts);
-
-    function fetchProducts() {
-        fetch('https://fakestoreapi.com/products')
-            .then(response => response.json())
-            .then(data => {
-                const container = document.getElementById('product-container');
-                container.innerHTML = ""; // Clear previous content
-
-                data.slice(0, 5).forEach(product => { // Display only 5 products
-                    const productDiv = document.createElement('div');
-                    productDiv.innerHTML = `
-                        <h3>${product.title}</h3>
-                        <img src="${product.image}" width="100">
-                        <p>Price: $${product.price}</p>
-                    `;
-                    container.appendChild(productDiv);
-                });
-            })
-            .catch(error => console.error('Error fetching products:', error));
-    }
-</script>
-<footer>
-    <p>&copy; @2025 Bismark Bett</p>
-    </footer>
 </body>
 </html>
