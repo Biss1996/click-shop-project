@@ -46,3 +46,22 @@ function addToCart(id, title, price, image) {
     document.getElementById('cartCount').textContent = cart.length;
     console.log("Cart:", cart);
 }
+function viewCart() {
+    const cartContainer = document.getElementById('cart-container');
+    cartContainer.innerHTML = "<h3>Cart Items</h3>";
+
+    if (cart.length === 0) {
+        cartContainer.innerHTML += "<p>Cart is empty</p>";
+        return;
+    }
+
+    cart.forEach(item => {
+        const itemDiv = document.createElement('div');
+        itemDiv.innerHTML = `
+            <h4>${item.title}</h4>
+            <img src="${item.image}" width="50">
+            <p>Price: $${item.price}</p>
+        `;
+        cartContainer.appendChild(itemDiv);
+    });
+}
