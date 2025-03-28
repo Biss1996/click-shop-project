@@ -46,11 +46,13 @@ section {
 }
 /* Footer */
 footer {
-    background: #044143;
+    background: #22d7de;
     color: white;
     text-align: center;
     padding: 10px 0;
     position: relative;
     bottom: 0;
+    display: flex;
+    margin-top: auto;
   
 }
