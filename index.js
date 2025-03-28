@@ -82,3 +82,8 @@ function populateFilterOptions(products) {
         filterDropdown.appendChild(option);
     });
 }
+function filterProducts() {
+    const selectedCategory = document.getElementById('filterCategory').value;
+    const filteredProducts = selectedCategory ? allProducts.filter(product => product.category === selectedCategory) : allProducts;
+    displayProducts(filteredProducts);
+}
